@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title> Flux Price </title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--[if lt IE 9]>
+    <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="bower_components/html5shiv/dist/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>
+    input {
+      width: 6em;
+      background: #fff;
+      padding: .25em .5em;
+      border-color: #f0f0f0;
+      border-radius: 3px;
+      margin-bottom: .25em;
+    }
+    main {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+    }
+    form {
+      padding-bottom: 8em;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      background: #ED4264;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #FFEDBC, #ED4264);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  </style>
+</head>
+<body onload="calc()">
+  <!-- <a href="ms-settings:apps-volume">SoundMixer</a> -->
+  <main>
+    <form oninput="calc()">
+      <label>
+        <span>Credit Pouch Price</span> <br>
+        <input type="number" id="cp-price" placeholder="CP price" value="4.5"> Mflux
+      </label>
+      <label>
+        <span>USD price</span> <br>
+        <input type="number" id="usd-price" placeholder="USD price" value="24.6"> VNĐ
+      </label>
+      <label>
+        <span>Flux price</span> <br>
+        <input type="text" readonly id="flux-price"> kVNĐ/Mflux
+      </label>
+    </form>
+    
+  </main>
+  <script type="text/javascript">
+    function $(id) {
+      return document.getElementById(id);
+    }
+    function calc() {
+      $("flux-price").value = Math.round(99.99 / 60 * $("usd-price").value / $("cp-price").value * 10) / 10
+    }
+  </script>
+</body>
+</html>
